@@ -1,4 +1,4 @@
-[![Screenshot](screenshot.png)](https://joshavanier.github.io)
+[![Screenshot](screenshot.png)](https://joshavanier.github.io/down)
 
 **Down** is a simple browser scratchpad. For when you'd rather not fire up a text editor for whatever reason.
 
