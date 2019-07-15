@@ -6,6 +6,7 @@
  * @license MIT
  */
 
+const e = document.getElementById('e')
 const {hash} = window.location
 
 if (hash) {
@@ -21,6 +22,6 @@ if (hash) {
   Object.assign(document.body.style, {backgroundColor: BG, color: FG})
 }
 
-e.innerHTML = localStorage.getItem('down') || 'Hello.'
+e.value = localStorage.getItem('down') || 'Hello.'
 e.focus()
-window.onkeyup = _ => localStorage.setItem('down', e.innerHTML)
+window.onkeyup = _ => localStorage.setItem('down', e.value)
