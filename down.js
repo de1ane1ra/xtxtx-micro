@@ -21,13 +21,6 @@ if (hash) {
   Object.assign(document.body.style, {backgroundColor: BG, color: FG})
 }
 
-const {appVersion, userAgent} = navigator
-if (!!~appVersion.indexOf('Win')
-  || !!~userAgent.indexOf('MSIE')
-  || !!~userAgent.indexOf('Win')) {
-  alert('Nope')
-} else {
-  e.innerHTML = localStorage.getItem('down') || 'Hello.'
-  e.focus()
-  window.onkeyup = _ => localStorage.setItem('down', e.innerHTML)
-}
+e.innerHTML = localStorage.getItem('down') || 'Hello.'
+e.focus()
+window.onkeyup = _ => localStorage.setItem('down', e.innerHTML)
