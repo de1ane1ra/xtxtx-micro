@@ -1,27 +1,21 @@
-/**
- * Down
- * Simple browser scratchpad
- *
- * @author Josh Avanier
- * @license MIT
- */
-
-const e = document.getElementById('e')
+const editor = document.getElementById('e')
 const {hash} = window.location
+const lsKey = 'down'
 
 if (hash) {
-  const ch = h => /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(h)
-  const s = hash.substr(1).split('-')
-  const a = `#${s[0]}`
-  const b = `#${s[1]}`
-  const BG = ch(a) && a ? a : BG
-  const FG = ch(b) && b ? b : FG
+  const isHex = value => /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value)
+  let [bg, fg] = hash.split('-')
+  fg= `#${fg}`
 
-  const c = document.styleSheets[0]
-  c.insertRule(`::selection{background:${FG};color:${BG}}`, c.cssRules.length)
-  Object.assign(document.body.style, {backgroundColor: BG, color: FG})
+  if (isHex(bg) && isHex(fg)) {
+    const css = document.styleSheets[0]
+    css.deleteRule(1)
+    css.insertRule(`::selection{background:${fg};color:${bg}}`, 1)
+    Object.assign(document.body.style, {
+      backgroundColor: bg, color: fg
+    })
+  }
 }
 
-e.value = localStorage.getItem('down') || 'Hello.'
-e.focus()
-window.onkeyup = _ => localStorage.setItem('down', e.value)
+editor.value = localStorage.getItem(lsKey) || 'Hello.'
+window.onkeyup = _ => localStorage.setItem(lsKey, editor.value)
