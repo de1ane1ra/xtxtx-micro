@@ -22,6 +22,13 @@ function paint () {
 window.onhashchange = paint;
 window.onkeyup = _ => localStorage.setItem(lsKey, editor.value);
 
+document.onkeydown = function (e) {
+  if (e.ctrlKey && e.keyCode === 83) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+};
+
 editor.onkeydown = function (e) {
   if (e.keyCode === 9) { // Tab
     e.preventDefault();
