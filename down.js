@@ -22,5 +22,20 @@ function paint () {
 window.onhashchange = paint;
 window.onkeyup = _ => localStorage.setItem(lsKey, editor.value);
 
+editor.onkeydown = function (e) {
+  if (e.keyCode === 9) { // Tab
+    e.preventDefault();
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    const {target} = e;
+    const {value} = target;
+
+    target.value = `${value.substring(0, start)}\t${value.substring(end)}`;
+
+    this.selectionStart = start + 1;
+    this.selectionEnd = start + 1;
+  }
+};
+
 paint();
 editor.value = localStorage.getItem(lsKey) || 'Hello.';
