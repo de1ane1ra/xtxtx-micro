@@ -27,10 +27,11 @@ function parseHash () {
 window.onhashchange = parseHash;
 document.onkeyup = () => localStorage.setItem(lsKey, editor.value);
 
-// Prevent Ctrl+S from interrupting
+// Handle Ctrl + S
 document.onkeydown = function (event) {
   if (!(event.ctrlKey && event.keyCode === 83)) return;
   event.preventDefault();
+  download();
 };
 
 // Enable tab characters
@@ -47,6 +48,23 @@ editor.onkeydown = function (event) {
   this.selectionStart = start + 1;
   this.selectionEnd = this.selectionStart;
 };
+
+function download () {
+  const filename = prompt('Please enter a filename:', 'notes.txt');
+  if (filename === null || filename === '') return;
+
+  const text = editor.value.replace(/\n/g, '\r\n');
+  const blob = new Blob([text], {type: 'text/plain'});
+  const link = Object.assign(document.createElement('a'), {
+    download: filename,
+    href: window.URL.createObjectURL(blob),
+    target: 'target',
+  });
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 parseHash();
 editor.value = localStorage.getItem(lsKey) || 'Hello.';
