@@ -50,7 +50,7 @@ editor.onkeydown = function (event) {
 };
 
 function download () {
-  const filename = prompt('Please enter a filename:', 'notes.txt');
+  const filename = prompt('Enter a filename:', 'notes.txt');
   if (filename === null || filename === '') return;
 
   const text = editor.value.replace(/\n/g, '\r\n');
