@@ -1,3 +1,5 @@
+'use strict';
+
 const editor = document.getElementById('e');
 const lsKey = 'down';
 
@@ -24,6 +26,23 @@ function parseHash () {
   paint(bg, fg);
 }
 
+function download () {
+  const filename = prompt('Enter a filename:', 'notes.txt');
+  if (filename === null || filename === '') return;
+
+  const text = editor.value.replace(/\n/g, '\r\n');
+  const blob = new Blob([text], {type: 'text/plain'});
+  const link = Object.assign(document.createElement('a'), {
+    download: filename,
+    href: window.URL.createObjectURL(blob),
+    target: 'target',
+  });
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 window.onhashchange = parseHash;
 document.onkeyup = () => localStorage.setItem(lsKey, editor.value);
 
@@ -48,23 +67,6 @@ editor.onkeydown = function (event) {
   this.selectionStart = start + 1;
   this.selectionEnd = this.selectionStart;
 };
-
-function download () {
-  const filename = prompt('Enter a filename:', 'notes.txt');
-  if (filename === null || filename === '') return;
-
-  const text = editor.value.replace(/\n/g, '\r\n');
-  const blob = new Blob([text], {type: 'text/plain'});
-  const link = Object.assign(document.createElement('a'), {
-    download: filename,
-    href: window.URL.createObjectURL(blob),
-    target: 'target',
-  });
-
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
 
 parseHash();
 editor.value = localStorage.getItem(lsKey) || 'Hello.';
