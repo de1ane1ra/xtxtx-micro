@@ -21,7 +21,7 @@ function parseHash () {
 }
 
 function download () {
-  const filename = prompt('Enter a filename:', 'notes.txt');
+  const filename = prompt('Save as:', 'notes.txt');
   if (filename === null || filename === '') return;
 
   const text = editor.value.replace(/\n/g, '\r\n');
