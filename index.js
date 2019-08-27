@@ -3,16 +3,11 @@
 const editor = document.getElementById('e');
 const lsKey = 'down';
 
-function addCSS (bg, fg) {
+function paint (bg, fg) {
   const css = document.styleSheets[0];
   css.deleteRule(1);
   css.insertRule(`::selection{background-color:${fg};color:${bg}}`, 1);
-}
-
-function paint (bg, fg) {
-  Object.assign(document.body.style, {
-    backgroundColor: bg, color: fg
-  });
+  Object.assign(document.body.style, {backgroundColor: bg, color: fg});
 }
 
 function parseHash () {
@@ -22,7 +17,6 @@ function parseHash () {
   let [bg, fg] = hash.split('-');
   fg = `#${fg}`;
   if (!isHex(bg) || !isHex(fg)) return;
-  addCSS(bg, fg);
   paint(bg, fg);
 }
 
