@@ -16,9 +16,9 @@ function paint (bg, fg) {
 }
 
 function parseHash () {
-  const isHex = value => /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value);
   const {hash} = window.location;
   if (!hash) return;
+  const isHex = value => /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value);
   let [bg, fg] = hash.split('-');
   fg = `#${fg}`;
   if (!isHex(bg) || !isHex(fg)) return;
@@ -68,5 +68,5 @@ editor.onkeydown = function (event) {
   this.selectionEnd = this.selectionStart;
 };
 
-parseHash();
 editor.value = localStorage.getItem(lsKey) || 'Hello.';
+parseHash();
