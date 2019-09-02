@@ -42,14 +42,14 @@ document.onkeyup = () => localStorage.setItem(lsKey, editor.value);
 
 // Handle Ctrl + S
 document.onkeydown = function (event) {
-  if (!(event.ctrlKey && event.keyCode === 83)) return;
+  if (!(event.ctrlKey && event.code === 'KeyS')) return;
   event.preventDefault();
   download();
 };
 
 // Enable tab characters
 editor.onkeydown = function (event) {
-  if (event.keyCode !== 9) return;
+  if (event.code !== 'Tab') return;
   event.preventDefault();
 
   const start = this.selectionStart;
