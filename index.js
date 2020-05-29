@@ -8,7 +8,7 @@ const download=function(){
     const link=Object.assign(document.createElement('a'),{
         download:fileName,
         href:window.URL.createObjectURL(blob),
-        target:'target',
+        target:'target'
     });
     document.body.appendChild(link);
     link.click();
