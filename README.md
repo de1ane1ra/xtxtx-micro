@@ -1,4 +1,4 @@
-xtxtx is a micro, minimalist text editor for your web browser.
+xtxtx-micro is a micro, minimalist text editor for your web browser.
 
 It has very few features:  
 1. Captures and renders keyboard input.
@@ -7,4 +7,4 @@ It has very few features:
 4. Presented in glorious monochrome.
 
 
-xtxtx is a reductive (and derivative) fork of [down](https://avanier.now.sh/w/down.html) by [Avanier](https://avanier.now.sh). Licensed under [MIT](LICENSE).
+xtxtx-micro is a reductive (and derivative) fork of [down](https://avanier.now.sh/w/down.html) by [Avanier](https://avanier.now.sh). Thanks Josh. Licensed under [MIT](LICENSE).
