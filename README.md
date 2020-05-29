@@ -1,17 +1,10 @@
-[![Screenshot](screenshot.png)](https://down.avanier.now.sh)
+xtxtx is a micro, minimalist text editor for your web browser.
 
-**Down** is a simple browser scratchpad — for when you'd rather not fire up a text editor for whatever reason.
+It has very few features:
+    - Captures and renders keyboard input.
+    - Resizable text area to represent desired # of rows and columns.
+    - Save your work as a `.txt` file with Ctrl+S or Meta+S.
+    - Presented in glorious monochrome.
 
-## Features
 
-Anything entered in the editor is automatically saved in localStorage.
-
-Add a hash to the URL to customise the page; provide two hexadecimal colour codes separated by a dash for the background and foreground:
-
-    https://down.avanier.now.sh/#030303-e4e4e4
-
-Press <kbd>Ctrl</kbd> + <kbd>s</kbd> to save your notes as a `.txt` file.
-
----
-
-**By [Avanier](https://avanier.now.sh). Licensed under [MIT](LICENSE).**
+xtxtx is a reductive (and derivative) fork of [down](https://avanier.now.sh/w/down.html) by [Avanier](https://avanier.now.sh). Licensed under [MIT](LICENSE).
